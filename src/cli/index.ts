@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import { Command } from "commander";
 import { input, password } from "@inquirer/prompts";
 import { saveToken, getToken, deleteToken, deleteDeviceId } from "./utils/auth.js";

@@ -1,3 +1,4 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import { Command } from "commander";
 import { io } from "socket.io-client";
 import { getToken, saveDeviceId } from "../utils/auth.js";
