@@ -24,7 +24,8 @@ agentCommand
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "ngrok-skip-browser-warning": "true"
           }
         }
       );
@@ -50,6 +51,9 @@ agentCommand
       auth: {
         token,
         deviceId
+      },
+      extraHeaders: {
+        "ngrok-skip-browser-warning": "true"
       }
     });
 

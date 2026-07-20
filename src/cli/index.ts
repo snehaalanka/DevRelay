@@ -33,7 +33,8 @@ program
       const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/register", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true"
         },
         body: JSON.stringify({
           username,
@@ -74,7 +75,8 @@ program
       const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true"
         },
         body: JSON.stringify({
           email,
@@ -112,7 +114,8 @@ program
     try {
       const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/me", {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "true"
         }
       });
 
@@ -144,7 +147,8 @@ program
     try {
       const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/devices", {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "true"
         }
       });
 
@@ -196,7 +200,8 @@ program
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "true"
         },
         body: JSON.stringify({
           deviceName,
@@ -246,7 +251,8 @@ program
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "true"
         },
         body: JSON.stringify({ email, deviceId, permission: command })
       });
@@ -267,7 +273,7 @@ program
 
     try {
       const response = await fetch(`https://ending-morbidly-paradox.ngrok-free.dev/devices/${deviceId}/logs`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}`, "ngrok-skip-browser-warning": "true" }
       });
       const data = await response.json();
       if (!response.ok) return console.log(`Error: ${data.message}`);
