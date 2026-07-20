@@ -1,0 +1,1 @@
+import prisma from './src/lib/prisma.ts'; async function test() { try { await prisma.user.findUnique({ where: { email: 'test@example.com' } }); console.log('success'); } catch (e) { console.error('Error:', e); } finally { await prisma.$disconnect(); } } test();

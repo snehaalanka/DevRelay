@@ -1,0 +1,1 @@
+import prisma from './src/lib/prisma.ts'; async function test() { try { const users = await prisma.user.findMany(); console.log('Success! Users:', users); } catch (e: any) { console.error('Error:', e.message); } finally { await prisma.$disconnect(); } } test();
