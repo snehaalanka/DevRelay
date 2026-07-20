@@ -2,9 +2,19 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import { Command } from "commander";
 import { io } from "socket.io-client";
 import { getToken, saveDeviceId } from "../utils/auth.js";
+import { getConfig } from "../utils/config.js";
 import { exec } from "child_process";
 
 export const agentCommand = new Command("agent");
+
+function getBaseUrl() {
+  const config = getConfig();
+  if (!config?.serverUrl) {
+    console.log("Error: Server URL not set. Please run 'devrelay config <url>' first.");
+    process.exit(1);
+  }
+  return config.serverUrl.replace(/\/$/, '');
+}
 
 agentCommand
   .command("start")
@@ -20,7 +30,7 @@ agentCommand
 
     try {
       const response = await fetch(
-        "https://ending-morbidly-paradox.ngrok-free.dev/devices/register",
+        `${getBaseUrl()}/devices/register`,
         {
           method: "POST",
           headers: {
@@ -47,7 +57,7 @@ agentCommand
       return;
     }
 
-    const socket = io("https://ending-morbidly-paradox.ngrok-free.dev", {
+    const socket = io(getBaseUrl(), {
       auth: {
         token,
         deviceId

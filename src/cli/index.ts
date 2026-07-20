@@ -3,14 +3,32 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import { Command } from "commander";
 import { input, password } from "@inquirer/prompts";
 import { saveToken, getToken, deleteToken, deleteDeviceId } from "./utils/auth.js";
+import { getConfig, saveConfig } from "./utils/config.js";
 import { agentCommand } from "./commands/agent.js";
 
 const program = new Command();
+
+function getBaseUrl() {
+  const config = getConfig();
+  if (!config?.serverUrl) {
+    console.log("Error: Server URL not set. Please run 'devrelay config <url>' first.");
+    process.exit(1);
+  }
+  return config.serverUrl.replace(/\/$/, '');
+}
 
 program
   .name("devrelay")
   .description("Terminal-based remote developer collaboration tool")
   .version("1.0.0");
+
+program
+  .command("config <url>")
+  .description("Set the remote DevRelay server URL")
+  .action((url: string) => {
+    saveConfig({ serverUrl: url });
+    console.log(`Server URL set to: ${url}`);
+  });
 
 program
   .command("register")
@@ -30,7 +48,7 @@ program
     });
 
     try {
-      const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/register", {
+      const response = await fetch(`${getBaseUrl()}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +90,7 @@ program
     });
 
     try {
-      const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/login", {
+      const response = await fetch(`${getBaseUrl()}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +130,7 @@ program
     }
 
     try {
-      const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/me", {
+      const response = await fetch(`${getBaseUrl()}/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "ngrok-skip-browser-warning": "true"
@@ -145,7 +163,7 @@ program
     }
 
     try {
-      const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/devices", {
+      const response = await fetch(`${getBaseUrl()}/devices`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "ngrok-skip-browser-warning": "true"
@@ -196,7 +214,7 @@ program
     console.log(`Running command on ${deviceName}...`);
 
     try {
-      const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/run", {
+      const response = await fetch(`${getBaseUrl()}/run`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -247,7 +265,7 @@ program
     if (!token) return console.log("You are not logged in.");
 
     try {
-      const response = await fetch("https://ending-morbidly-paradox.ngrok-free.dev/permissions/grant", {
+      const response = await fetch(`${getBaseUrl()}/permissions/grant`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
