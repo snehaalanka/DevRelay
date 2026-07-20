@@ -8,7 +8,7 @@
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npx prisma generate && npm run build"
   },
   "bin": {
     "devrelay": "./dist/cli/index.js"

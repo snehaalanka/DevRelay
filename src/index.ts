@@ -222,7 +222,7 @@ app.get("/devices", async (req, res) => {
     });
 
     return res.json({
-      devices: devices.map((d) => ({
+      devices: devices.map((d: any) => ({
         id: d.id,
         name: d.name,
         status: d.status,
@@ -524,7 +524,7 @@ io.on("connection", (socket) => {
       status: "online",
       lastSeen: new Date()
     }
-  }).catch((error) => console.error(error));
+  }).catch((error: any) => console.error(error));
 
   socket.on("heartbeat", () => {
     prisma.device.update({
@@ -532,7 +532,7 @@ io.on("connection", (socket) => {
       data: {
         lastSeen: new Date()
       }
-    }).catch((error) => console.error(error));
+    }).catch((error: any) => console.error(error));
   });
 
   socket.on("disconnect", () => {
@@ -544,7 +544,7 @@ io.on("connection", (socket) => {
         status: "offline",
         lastSeen: new Date()
       }
-    }).catch((error) => console.error(error));
+    }).catch((error: any) => console.error(error));
   });
 });
 
