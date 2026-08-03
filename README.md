@@ -116,7 +116,7 @@ devrelay grant <teammate-email> <your-device-id> "<command>"
 Example:
 
 ```bash
-devrelay grant sudaykumar2608@gmail.com 1 "git log"
+devrelay grant abc@gmail.com 1 "git log"
 ```
 
 ---
@@ -132,7 +132,7 @@ devrelay run <target-device-name> "<command>"
 Example:
 
 ```bash
-devrelay run sneha-HP-Pavilion-Laptop-14-dv2xxx "git log"
+devrelay run alanka-HPPavilion-Laptop-11-dv2ooxx "git log"
 ```
 
 ---
