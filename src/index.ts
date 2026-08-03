@@ -136,7 +136,7 @@ app.post("/devices/register", async (req, res) => {
       userId: number;
     };
 
-    const hostname = os.hostname();
+    const hostname = req.body.name || "Unknown Device";
 
     const existingDevice = await prisma.device.findFirst({
       where: {

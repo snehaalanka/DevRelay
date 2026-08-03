@@ -34,9 +34,11 @@ agentCommand
         {
           method: "POST",
           headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
             "ngrok-skip-browser-warning": "true"
-          }
+          },
+          body: JSON.stringify({ name: require("os").hostname() })
         }
       );
 
