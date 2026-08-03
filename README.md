@@ -4,9 +4,8 @@
 
 Imagine you are debugging a complex local build issue. Instead of screen-sharing or copy-pasting logs, you can instantly grant a coworker permission to run `git diff` or `npm run debug` directly on your machine, right from their own terminal.
 
----
 
-# ✨ Why DevRelay? (The Problem It Solves)
+# Why DevRelay? (The Problem It Solves)
 
 Traditionally, giving someone access to your local environment meant:
 
@@ -19,9 +18,8 @@ Traditionally, giving someone access to your local environment meant:
 
 With our outbound-only Socket.io architecture, your machine stays safely behind its NAT/Firewall. Furthermore, our **Zero-Trust Permission Model** ensures that a teammate can only run the *exact* commands you whitelist. You maintain absolute control, and every single execution is strictly logged.
 
----
 
-# 🌟 Key Features
+# Key Features
 
 - ⚡ **Instant Reverse-Tunneling:** Run terminal commands on remote devices seamlessly over secure WebSockets.
 - 🔐 **Zero-Trust Access Control:** Granular permission system. Grant a user permission to run `git log`, but strictly block them from running `rm -rf`.
@@ -29,9 +27,8 @@ With our outbound-only Socket.io architecture, your machine stays safely behind 
 - ☁️ **Cloud-Native Backend:** Backed by Supabase (PostgreSQL) for blazing-fast user authentication, device tracking, and permission validation.
 - 📜 **Immutable Audit Logs:** Every command executed remotely is permanently logged to the cloud database, providing complete visibility into who ran what, and when.
 
----
 
-# 🛠️ Architecture & Tech Stack
+# Architecture & Tech Stack
 
 DevRelay is built with modern, enterprise-grade tools:
 
@@ -46,7 +43,7 @@ DevRelay is built with modern, enterprise-grade tools:
 
 ---
 
-# 🚀 Getting Started
+# Getting Started
 
 ## 1. Installation
 
