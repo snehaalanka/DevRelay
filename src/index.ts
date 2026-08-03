@@ -468,7 +468,8 @@ app.post("/run", async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({
-      message: "Something went wrong"
+      message: "Something went wrong",
+      error: String(error)
     });
   }
 });
