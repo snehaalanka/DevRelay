@@ -21,11 +21,11 @@ With our outbound-only Socket.io architecture, your machine stays safely behind 
 
 # Key Features
 
-- ⚡ **Instant Reverse-Tunneling:** Run terminal commands on remote devices seamlessly over secure WebSockets.
-- 🔐 **Zero-Trust Access Control:** Granular permission system. Grant a user permission to run `git log`, but strictly block them from running `rm -rf`.
-- 📡 **NAT & Firewall Bypassing:** Because the agent initiates an outbound connection to the cloud, you never need to open inbound ports.
-- ☁️ **Cloud-Native Backend:** Backed by Supabase (PostgreSQL) for blazing-fast user authentication, device tracking, and permission validation.
-- 📜 **Immutable Audit Logs:** Every command executed remotely is permanently logged to the cloud database, providing complete visibility into who ran what, and when.
+-  **Instant Reverse-Tunneling:** Run terminal commands on remote devices seamlessly over secure WebSockets.
+-  **Zero-Trust Access Control:** Granular permission system. Grant a user permission to run `git log`, but strictly block them from running `rm -rf`.
+-  **NAT & Firewall Bypassing:** Because the agent initiates an outbound connection to the cloud, you never need to open inbound ports.
+-  **Cloud-Native Backend:** Backed by Supabase (PostgreSQL) for blazing-fast user authentication, device tracking, and permission validation.
+-  **Immutable Audit Logs:** Every command executed remotely is permanently logged to the cloud database, providing complete visibility into who ran what, and when.
 
 
 # Architecture & Tech Stack
@@ -79,7 +79,7 @@ npm link
 
 ---
 
-# 💻 Usage Guide
+#  Usage Guide
 
 ## 1. Authentication
 
@@ -137,7 +137,7 @@ devrelay run sneha-HP-Pavilion-Laptop-14-dv2xxx "git log"
 
 ---
 
-# 🎯 Real-World Use Cases
+#  Real-World Use Cases
 
 ### Remote Pair Programming
 
@@ -168,7 +168,7 @@ This provides a secure, zero-trust architecture where users retain complete cont
 
 ---
 
-# 📌 Future Enhancements
+#  Future Enhancements
 
 - Command approval prompts
 - Role-based access control (RBAC)
