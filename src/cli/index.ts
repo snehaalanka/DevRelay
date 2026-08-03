@@ -61,7 +61,15 @@ program
         })
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.error("❌ Network Error: The backend server is unreachable.");
+        console.error("Make sure 'npm run dev' and Ngrok are both actively running!");
+        return;
+      }
 
       if (!response.ok) {
         console.log("Registration failed:", data.message);
@@ -102,7 +110,14 @@ program
         })
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.log("RAW RESPONSE:", text);
+        throw e;
+      }
 
       if (!response.ok) {
         console.log("Login failed:", data.message);
@@ -137,7 +152,14 @@ program
         }
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.log("RAW RESPONSE:", text);
+        throw e;
+      }
 
       if (!response.ok) {
         console.log(data.message);
@@ -170,7 +192,14 @@ program
         }
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.log("RAW RESPONSE:", text);
+        throw e;
+      }
 
       if (!response.ok) {
         console.log(data.message);
@@ -227,7 +256,14 @@ program
         })
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.log("RAW RESPONSE:", text);
+        throw e;
+      }
 
       if (!response.ok) {
         console.log(`Execution failed: ${data.message}`);
@@ -274,7 +310,14 @@ program
         },
         body: JSON.stringify({ email, deviceId, permission: command })
       });
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.log("RAW RESPONSE:", text);
+        throw e;
+      }
       if (!response.ok) return console.log(`Error: ${data.message}`);
       console.log(`✓ ${data.message}`);
     } catch (error) {
@@ -293,7 +336,14 @@ program
       const response = await fetch(`https://ending-morbidly-paradox.ngrok-free.dev/devices/${deviceId}/logs`, {
         headers: { Authorization: `Bearer ${token}`, "ngrok-skip-browser-warning": "true" }
       });
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.log("RAW RESPONSE:", text);
+        throw e;
+      }
       if (!response.ok) return console.log(`Error: ${data.message}`);
       
       if (data.logs.length === 0) {
